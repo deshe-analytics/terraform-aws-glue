@@ -13,7 +13,7 @@ resource "aws_glue_job" "this" {
   non_overridable_arguments = var.non_overridable_arguments
   glue_version              = var.glue_version
   timeout                   = var.timeout
-  execution_class = var.execution_class
+  execution_class = var.execution_class_type
   number_of_workers         = var.number_of_workers
   worker_type               = var.worker_type
   max_capacity              = var.max_capacity
