@@ -21,7 +21,7 @@
 #
 
 module "this" {
-  source  = "cloudposse/label/null"
+  source  = "https://github.com/deshe-analytics/terraform-null-label.git"
   version = "0.25.0" # requires Terraform >= 0.13.0
 
   enabled             = var.enabled
@@ -41,12 +41,11 @@ module "this" {
   label_value_case    = var.label_value_case
   descriptor_formats  = var.descriptor_formats
   labels_as_tags      = var.labels_as_tags
-
+  execution_class = var.execution_class
   context = var.context
 }
 
 # Copy contents of cloudposse/terraform-null-label/variables.tf here
-
 variable "context" {
   type = any
   default = {
@@ -66,6 +65,7 @@ variable "context" {
     label_key_case      = null
     label_value_case    = null
     descriptor_formats  = {}
+    execution_class = null
     # Note: we have to use [] instead of null for unset lists due to
     # https://github.com/hashicorp/terraform/issues/28137
     # which was not fixed until Terraform 1.0.0,
@@ -273,6 +273,14 @@ variable "descriptor_formats" {
     Label values will be normalized before being passed to `format()` so they will be
     identical to how they appear in `id`.
     Default is `{}` (`descriptors` output will be empty).
+    EOT
+}
+
+variable "execution_class" {
+  type        = string
+  default     = null
+  description = <<-EOT
+Defines jobs execution type
     EOT
 }
 

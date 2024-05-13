@@ -108,3 +108,9 @@ variable "notification_property" {
   description = "Notification property of the job."
   default     = null
 }
+
+variable "execution_class_type" {
+  default = null
+  type = string
+  description = "Indicates whether the job is run with a standard or flexible execution class. "
+}
