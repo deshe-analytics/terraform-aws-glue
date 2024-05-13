@@ -108,3 +108,8 @@ variable "notification_property" {
   description = "Notification property of the job."
   default     = null
 }
+
+variable "execution_class_type" {
+  type = string
+  default = null
+}
